@@ -31,6 +31,9 @@ module.exports = {
     ],
   },
   devtool: '#source-map',
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'quick-start',
