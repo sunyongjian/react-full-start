@@ -6,7 +6,7 @@ import './index.less';
 const App = () => (
   <div>
     <img src={require('./logo.svg')} alt="logo" />
-    <h2>welcome to react-quick-start</h2>
+    <h2>welcome to react-full-start</h2>
     <A />
   </div>
 );
