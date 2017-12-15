@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "rm -rf public && webpack",
+    "build": "export NODE_ENV=production && rm -rf public && webpack --config ./config/webpack.pro.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -30,6 +30,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
     "express": "^4.15.3",
+    "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.2",
@@ -39,7 +40,8 @@
     "webpack": "^2.6.1",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.5.0",
-    "webpack-hot-middleware": "^2.18.2"
+    "webpack-hot-middleware": "^2.18.2",
+    "webpack-merge": "^4.1.1"
   },
   "dependencies": {
     "react": "^15.6.1",
