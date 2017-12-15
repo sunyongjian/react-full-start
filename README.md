@@ -1,18 +1,25 @@
-### introduction
-> a full stack react initial project for testing, using cases, examples.
+### Introduction
+> A full stack react initial project for testing, using cases, or project template.But it dose not include whole react family, eg: redux/mobx.I hope you choose the right one.
 
-webpack 以 node 中间件的方式调用，方便开发前端页面的时候，在同一个端口内，可以启 node 服务。
+At first, the repository was designed to start quickly a react project to test funture. Now, it's an all-around development template about react.It uses the following technology stacks.
 
-主要是为了便于写 react 的 example 的时候，需要用 node 写接口，而又不想像现在的前后端项目分离，再起一个后端接口的项目... 
+### Tech Stacks
 
-### 功能
+- [x] React
+- [x] Babel
+- [x] Less
+- [x] Eslint
+- [x] Webpack2
+- [x] Yarn
+- [x] Node/Express
 
-- 热更新
-- react 支持
-- babel 支持
-- less 
-- eslint
-- webpack2
-- yarn
+### Feature
+It will support some of the features used in development or production environments.
 
-如果有类似的需求，请参照。
+- [x] HotModuleReplace
+- [x] Dll
+- [x] Production/Development
+- [x] UglifyJs
+- [x] ExtractTextCss
+- [ ] Proxy
+- [ ] Mock
