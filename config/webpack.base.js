@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = require('../config');
+const ROOT_PATH = path.resolve(__dirname, '../');
 
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   module: {
     rules: [
@@ -24,8 +25,8 @@ module.exports = {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
-        })
+          use: ['css-loader', 'less-loader'],
+        }),
       },
       {
         test: /\.(png|jpg|svg|gif|jpeg|woff|eot|ttf|svg)$/,
@@ -34,10 +35,15 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"],
+    extensions: ['.js', '.jsx', '.json'],
   },
   plugins: [
     new ExtractTextPlugin('[name].css'),
+    new webpack.DllReferencePlugin({
+      context: ROOT_PATH,
+      manifest: require('../dll/vendor/vendor-manifest.json'),
+      sourceType: 'var',
+    }),
     new HtmlWebpackPlugin({
       title: 'quick-start',
       template: './index.html',
@@ -45,7 +51,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-      }
+      },
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

@@ -12,7 +12,7 @@ module.exports = merge(base, {
   output: {
     path: path.join(ROOT_PATH, '/public'),
     publicPath: config.cdn || '/',
-    filename: '[name].[hash].js'
+    filename: '[name].[hash].js',
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({

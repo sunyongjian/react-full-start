@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "export NODE_ENV=production && rm -rf public && webpack --config ./config/webpack.pro.js",
+    "dll": "webpack --config ./config/webpack.dll.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

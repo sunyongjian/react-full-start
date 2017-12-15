@@ -24,5 +24,6 @@ module.exports = {
         "react/forbid-prop-types": [0, { "forbid": ["any", "array", "object"] }],
         "jsx-a11y/href-no-hash": 0,
         "global-require": 0,
+        "import/no-extraneous-dependencies": 0,
     }
 };
