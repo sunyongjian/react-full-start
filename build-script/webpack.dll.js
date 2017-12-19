@@ -6,7 +6,7 @@ const publicPath = isProd ? path.join(ROOT_PATH, 'public/dll') : path.join(ROOT_
 
 const plugins = [new webpack.DllPlugin({
   path: path.join(publicPath, '[name]-manifest.json'),
-  name: '[name]',
+  name: '[name]_[chunkhash]',
 })];
 
 if (isProd) {
@@ -30,9 +30,9 @@ module.exports = {
     ],
   },
   output: {
-    filename: '[name].js',
+    filename: '[name]_[chunkhash].js',
     path: publicPath,
-    library: '[name]',
+    library: '[name]_[chunkhash]',
     publicPath: '/',
   },
   plugins,

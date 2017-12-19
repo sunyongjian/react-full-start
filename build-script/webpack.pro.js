@@ -2,7 +2,8 @@ const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const base = require('./webpack.base');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const config = require('../config');
 const ROOT_PATH = path.resolve(__dirname, '../');
 
@@ -15,6 +16,10 @@ module.exports = merge(base, {
     filename: 'js/[name].[hash].js',
   },
   plugins: [
+    new HtmlIncludeAssetsPlugin({
+      assets: [`dll/${require('../public/dll/vendor-manifest.json').name}.js`],
+      append: false
+    }),
     new HtmlWebpackPlugin({
       title: 'quick-start',
       template: './index.html',
