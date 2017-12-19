@@ -3,6 +3,21 @@
 
 At first, the repository was designed to start quickly a react project to test funture. Now, it's an all-around development template about react.It uses the following technology stacks.
 
+### Scripts
+#### dev
+`
+npm run dll
+`
+`
+npm start
+`
+#### prod
+`
+npm run builddll
+`
+`
+npm run build
+`
 ### Tech Stacks
 
 - [x] React
