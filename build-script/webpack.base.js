@@ -6,7 +6,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = require('../config');
 const ROOT_PATH = path.resolve(__dirname, '../');
 
-
 module.exports = {
   entry: ['./src/index.jsx'],
   output: {
@@ -19,7 +18,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        },
       },
       {
         test: /\.less$/,
@@ -31,6 +35,9 @@ module.exports = {
       {
         test: /\.(png|jpg|svg|gif|jpeg|woff|eot|ttf|svg)$/,
         loader: 'file-loader',
+        options: {
+          name: 'static/[name].[hash].[ext]',
+        },
       },
     ],
   },
@@ -38,23 +45,11 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
-    new webpack.DllReferencePlugin({
-      context: ROOT_PATH,
-      manifest: require('../dll/vendor/vendor-manifest.json'),
-      sourceType: 'var',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'quick-start',
-      template: './index.html',
-    }),
+    new ExtractTextPlugin('css/[name].[hash].css'),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
       },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
     }),
   ],
 };
