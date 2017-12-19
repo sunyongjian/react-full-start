@@ -2,13 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const ROOT_PATH = path.resolve(__dirname, '../');
 const isProd = process.env.NODE_ENV === 'production';
-const InJecteWebpackPlugin = require('./inject-plugin');
 const publicPath = isProd ? path.join(ROOT_PATH, 'public/dll') : path.join(ROOT_PATH, 'dll');
 
 const plugins = [new webpack.DllPlugin({
   path: path.join(publicPath, '[name]-manifest.json'),
   name: '[name]',
-}), new InJecteWebpackPlugin()];
+})];
 
 if (isProd) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({

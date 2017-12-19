@@ -5,8 +5,6 @@ const base = require('./webpack.base');
 const ROOT_PATH = path.resolve(__dirname, '../');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const InlineWebpackPlugin = require('./inject-plugin');
-
 // dev import dll to faster build
 
 module.exports = merge(base, {
@@ -22,7 +20,6 @@ module.exports = merge(base, {
       manifest: require('../dll/vendor-manifest.json'),
       sourceType: 'var',
     }),
-    new InlineWebpackPlugin({a: 1}),
     new webpack.HotModuleReplacementPlugin(),
   ],
 });
