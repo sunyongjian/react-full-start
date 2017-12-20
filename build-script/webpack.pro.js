@@ -14,6 +14,7 @@ module.exports = merge(base, {
     path: path.join(ROOT_PATH, '/public'),
     publicPath: config.cdn || '/',
     filename: 'js/[name].[hash].js',
+    chunkFilename: 'js/[name].[chunkhash:5].chunk.js',
   },
   plugins: [
     new HtmlIncludeAssetsPlugin({
