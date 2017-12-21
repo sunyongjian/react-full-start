@@ -8,6 +8,7 @@ At first, the repository was designed to start quickly a react project to test f
 `
 npm run dll
 `
+jj
 `
 npm start
 `
@@ -15,6 +16,7 @@ npm start
 `
 npm run builddll
 `
+
 `
 npm run build
 `
@@ -37,4 +39,7 @@ It will support some of the features used in development or production environme
 - [x] UglifyJs
 - [x] ExtractTextCss
 - [ ] Proxy
-- [ ] Mock
+- [x] Mock
+
+#### Mock
+According to api path, define json file which is support mockjs syntax,in the mock folder.
