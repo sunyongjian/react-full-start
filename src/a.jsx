@@ -1,9 +1,18 @@
 import React from 'react';
+import axios from 'axios';
 
-const A = () => {
-  console.log(1);
-  return (
-    <div>AAAAA</div>
-  );
-};
-export default A;
+export default class A extends React.PureComponent {
+  componentDidMount() {
+    axios({
+      method: 'get',
+      url: '/api/list',
+      responseType: 'json'
+    })
+      .then(function (response) {
+        console.log(response);
+      });
+  }
+  render() {
+    return <div>AAAAA</div>
+  }
+}
