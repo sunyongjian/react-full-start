@@ -42,7 +42,7 @@ It will support some of the features used in development or production environme
 - [x] Production/Development
 - [x] UglifyJs
 - [x] ExtractTextCss
-- [ ] Proxy
+- [x] Proxy
 - [x] Mock
 
 #### Mock
