@@ -1,11 +1,16 @@
 const http = require('http');
+const url = require('url');
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const fs = require('mz/fs');
-const router = express.Router();
 const mockjs = require('mockjs');
+const proxy = require('express-http-proxy');
+
 const app = express();
+const router = express.Router();
+
+const config = require('../config');
 const ROOT_PATH = path.resolve(__dirname, '../');
 const host = process.argv[2] || 'localhost';
 app.use(require('morgan')('short'));
@@ -27,40 +32,45 @@ app.use(require("webpack-hot-middleware")(compiler, {
   path: '/__webpack_hmr',
 }));
 
+if (host !== 'localhost') {// proxy
+  const { host: hostConfig } = config.proxy;
+  const cfg = hostConfig[host];
+  const { name, port = '' } = cfg;
+  console.log(`${name}:${port}`, 'host');
 
-// proxy
-router.use(async (req, res, next) => {
-  if(host !== 'localhost') {
-    console.log(host, 'host');
-    next();
-  } else {
+  app.use(proxy(`${name}:${port}`, {
+    proxyReqPathResolver: function (req, res) {
+      const pathname = url.parse(req.url).path;
+      console.log(pathname, "pathname");
+      return pathname;
+    }
+  }));
+} else {// local mock
+  router.use(async (req, res, next) => {
     const { path } = req;
     const filename = `${ROOT_PATH}/server/mock/${path}.json`;
     try {// mock data
-      console.log(filename, 'path');
-      
       const s = await fs.stat(filename);
-      console.log(s.isFile(), 'isfile');
-      if(!s.isFile()) {
+      if (!s.isFile()) {
         return next();
       }
       fs.readFile(filename, 'utf-8').then(json => {
         const data = mockjs.mock(JSON.parse(json.toString()));
         res.send(data);
       })
-    } catch(e) {
+    } catch (e) {
       console.log(e, 'error');
     }
-    
-  }
-})
+  })
+}
+
 // Do anything you like with the rest of your express application.
 
 
 app.use(router);
 
 var server = http.createServer(app);
-server.listen(process.env.PORT || 8888, function () {
+server.listen(process.env.PORT || config.port || 1234, function () {
   console.log("Listening on %j", server.address());
 });
 
