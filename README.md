@@ -5,12 +5,12 @@ At first, the repository was designed to start quickly a react project to test f
 
 ### Scripts
 #### prepare
-`
+
+```
 git clone https://github.com/sunyongjian/react-full-start.git
 
-yarn/ npm install
-
-`
+yar`/ npm install
+```
 
 #### dev
 
