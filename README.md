@@ -4,7 +4,13 @@
 At first, the repository was designed to start quickly a react project to test funture. Now, it's an all-around development template about react.It uses the following technology stacks.
 
 ### Scripts
-npm or yarn
+#### prepare
+`
+git clone https://github.com/sunyongjian/react-full-start.git
+
+yarn/ npm install
+
+`
 
 #### dev
 
@@ -45,5 +51,8 @@ It will support some of the features used in development or production environme
 - [x] Proxy
 - [x] Mock
 
+#### Proxy
+You can define proxy host in `config/proxy.js`, and open the proxy when npm start. eg: `npm start api`.
 #### Mock
 According to api path, define json file which is support mockjs syntax,in the mock folder.
+
