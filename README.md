@@ -9,7 +9,7 @@ At first, the repository was designed to start quickly a react project to test f
 ```
 git clone https://github.com/sunyongjian/react-full-start.git
 
-yar`/ npm install
+yarn/ npm install
 ```
 
 #### dev
