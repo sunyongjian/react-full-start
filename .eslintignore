@@ -1,4 +1,6 @@
-webpack.config.js
+build-script
+config
+dll
+server
+public
 node_modules
-/index.js
-/server.js

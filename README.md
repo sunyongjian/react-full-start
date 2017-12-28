@@ -14,21 +14,21 @@ yarn/ npm install
 
 #### dev
 
-`
+```
 npm run dll
-`
+```
 
-`
+```
 npm start
-`
+```
 #### prod
-`
+```
 npm run builddll
-`
+```
 
-`
+```
 npm run build
-`
+```
 
 ### Tech Stacks
 
