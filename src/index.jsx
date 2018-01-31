@@ -12,6 +12,7 @@ const App = () => (
   </div>
 );
 
+
 if (module.hot) { // hmr necessary
   module.hot.accept();
 }
