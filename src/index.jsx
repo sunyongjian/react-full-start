@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import 'babel-polyfill';
 import A from './a';
+import './commom';
 import './index.less';
 
 const App = () => (

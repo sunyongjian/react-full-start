@@ -27,6 +27,7 @@ module.exports = {
     vendor: [
       'react',
       'react-dom',
+      path.join(ROOT_PATH, 'src/commom.js'),// 测试自己的项目代码是否可以打到 vendor 通过 dll 正常使用。
     ],
   },
   output: {
