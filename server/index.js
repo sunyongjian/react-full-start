@@ -3,9 +3,9 @@ const url = require('url');
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
-const fs = require('mz/fs');
 const mockjs = require('mockjs');
 const proxy = require('express-http-proxy');
+const SunMockMiddleware = require('sun-mock-middleware');
 
 const app = express();
 const router = express.Router();
@@ -46,28 +46,21 @@ if (host !== 'localhost') {// proxy
     }
   }));
 } else {// local mock
-  router.use(async (req, res, next) => {
-    const { path } = req;
-    const filename = `${ROOT_PATH}/server/mock/${path}.json`;
-    try {// mock data
-      const s = await fs.stat(filename);
-      if (!s.isFile()) {
-        return next();
-      }
-      fs.readFile(filename, 'utf-8').then(json => {
-        const data = mockjs.mock(JSON.parse(json.toString()));
-        res.send(data);
-      })
-    } catch (e) {
-      console.log(e, 'error');
-    }
-  })
+  router.use('/api', SunMockMiddleware({
+    pathMap: {
+    },
+    mockDir: `${ROOT_PATH}/mock`,
+  }))
 }
 
 // Do anything you like with the rest of your express application.
 
 
 app.use(router);
+
+app.get('/favicon.ico', (req, res) => {
+  res.send('favicon');
+});
 
 var server = http.createServer(app);
 server.listen(process.env.PORT || config.port || 1234, function () {

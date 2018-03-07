@@ -4870,6 +4870,12 @@ style-loader@^0.18.2:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+sun-mock-middleware@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/sun-mock-middleware/download/sun-mock-middleware-0.0.2.tgz#4b7ff6f2c26663aebd34d7ccd044128668a53bd2"
+  dependencies:
+    mockjs "^1.0.1-beta3"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/supports-color/download/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"

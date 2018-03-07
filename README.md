@@ -28,6 +28,13 @@ npm run builddll
 
 ```
 npm run build
+
+```
+
+```
+# open
+
+http://localhost:8888/public/index.html
 ```
 
 ### Tech Stacks
@@ -53,6 +60,8 @@ It will support some of the features used in development or production environme
 
 #### Proxy
 You can define proxy host in `config/proxy.js`, and open the proxy when npm start. eg: `npm start api`.
+
 #### Mock
-According to api path, define json file which is support mockjs syntax,in the mock folder.
+Applying sun-mock-middleware.[reference](https://github.com/sunyongjian/sun-mock-middleware)
+
 
